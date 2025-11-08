@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!-- saved from url=(0105)file:///C:/Users/User/Downloads/precio_ticket-main%20(3)/precio_ticket-main/precio_ticket_horizontal.html -->
-<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="es">
+<head>
+<meta charset="UTF-8">
 <title>Etiqueta Horizontal 80mm</title>
 <style>
   @page {
@@ -10,16 +10,42 @@
   }
 
   body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #fff;
+  }
+
+  /* Formulario (solo visible en pantalla, oculto al imprimir) */
+  #formulario {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 2px solid #ccc;
+    font-size: 14px;
+  }
+
+  #formulario input {
+    padding: 5px;
+    font-size: 14px;
+  }
+
+  #formulario button {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  /* Contenedor de etiqueta */
+  #etiqueta {
     width: 80mm;
     height: 50mm;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    font-family: Arial, sans-serif;
-    background: #fff;
+    margin: 0;
+    padding: 0;
   }
 
   .nombre {
@@ -43,6 +69,9 @@
   }
 
   @media print {
+    #formulario {
+      display: none; /* Oculta el formulario al imprimir */
+    }
     body {
       margin: 0;
       -webkit-print-color-adjust: exact;
@@ -51,8 +80,31 @@
 </style>
 </head>
 <body>
-  <p class="nombre">CAFÉ EN GRANOS</p>
-  <p class="precio"><span class="moneda">$</span>4500</p>
 
+  <!-- Formulario editable -->
+  <div id="formulario">
+    <label>Descripción:</label>
+    <input type="text" id="inputNombre" placeholder="Ej: Café en granos" size="20">
+    <label>Precio:</label>
+    <input type="number" id="inputPrecio" placeholder="4500" style="width:80px;">
+    <button onclick="actualizarEtiqueta()">Actualizar</button>
+    <button onclick="window.print()">🖨️ Imprimir</button>
+  </div>
 
-</body></html>
+  <!-- Vista previa de etiqueta -->
+  <div id="etiqueta">
+    <p class="nombre" id="nombre">CAFÉ EN GRANOS</p>
+    <p class="precio" id="precio"><span class="moneda">$</span>4500</p>
+  </div>
+
+<script>
+  function actualizarEtiqueta() {
+    const nombre = document.getElementById('inputNombre').value.trim();
+    const precio = document.getElementById('inputPrecio').value.trim();
+    if (nombre) document.getElementById('nombre').textContent = nombre.toUpperCase();
+    if (precio) document.getElementById('precio').innerHTML = '<span class="moneda">$</span>' + precio;
+  }
+</script>
+
+</body>
+</html>
