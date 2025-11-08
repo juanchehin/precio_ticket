@@ -46,6 +46,7 @@
     align-items: flex-start;
     margin: 0;
     padding: 0;
+    overflow: hidden;
   }
 
   .nombre {
@@ -54,6 +55,10 @@
     text-transform: uppercase;
     margin: 4mm 0 0 4mm;
     line-height: 1.1;
+    white-space: nowrap;         /* Evita los saltos de línea */
+    overflow: hidden;            /* Oculta el exceso */
+    text-overflow: ellipsis;     /* Muestra "..." si el texto es muy largo */
+    width: 95%;                  /* Deja un pequeño margen de seguridad */
   }
 
   .precio {
@@ -101,6 +106,7 @@
   function actualizarEtiqueta() {
     const nombre = document.getElementById('inputNombre').value.trim();
     const precio = document.getElementById('inputPrecio').value.trim();
+
     if (nombre) document.getElementById('nombre').textContent = nombre.toUpperCase();
     if (precio) document.getElementById('precio').innerHTML = '<span class="moneda">$</span>' + precio;
   }
