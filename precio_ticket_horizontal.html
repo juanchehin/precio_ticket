@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Etiqueta Horizontal 80mm</title>
 <style>
-  /* --- Configuración para impresión horizontal en 80 mm --- */
   @page {
     size: 80mm 50mm landscape; /* horizontal */
     margin: 0;
@@ -15,38 +14,40 @@
     height: 50mm;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-family: Arial, sans-serif;
     background: #fff;
-  }
-
-  .etiqueta {
-    width: 100%;
-    height: 100%;
-    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+  }
+
+  .fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    padding: 0 4mm; /* pequeño margen lateral para evitar corte */
+    box-sizing: border-box;
   }
 
   .nombre {
     font-size: 26pt;
     font-weight: bold;
     text-transform: uppercase;
-    margin: 0 0 8px 0;
-    line-height: 1.1;
+    margin: 0;
+    align-self: flex-start;
   }
 
   .precio {
-    font-size: 55pt;
+    font-size: 60pt;
     font-weight: bold;
     margin: 0;
+    text-align: right;
+    line-height: 1;
   }
 
   .moneda {
-    font-size: 28pt;
+    font-size: 30pt;
     vertical-align: top;
   }
 
@@ -59,8 +60,8 @@
 </style>
 </head>
 <body>
-  <div class="etiqueta">
-    <p class="nombre">Café en Granos</p>
+  <div class="fila">
+    <p class="nombre">CAFÉ EN GRANOS</p>
     <p class="precio"><span class="moneda">$</span>4500</p>
   </div>
 </body>
