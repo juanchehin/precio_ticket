@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Etiqueta de Precio</title>
+<style>
+  /* Tamaño del papel 80mm sin márgenes */
+  @page {
+    size: 80mm auto;
+    margin: 0;
+  }
+
+  body {
+    width: 80mm;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+
+  .etiqueta {
+    width: 100%;
+    padding: 10mm 5mm;
+    box-sizing: border-box;
+  }
+
+  .nombre {
+    font-size: 22pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0 0 10mm 0;
+    line-height: 1.2;
+  }
+
+  .precio {
+    font-size: 40pt;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .moneda {
+    font-size: 22pt;
+    vertical-align: top;
+  }
+
+  @media print {
+    body {
+      margin: 0;
+    }
+    .etiqueta {
+      page-break-inside: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="etiqueta">
+    <p class="nombre">PANTUFLAS</p>
+    <p class="precio"><span class="moneda">$</span>6000</p>
+  </div>
+</body>
+</html>
